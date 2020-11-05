@@ -1,5 +1,7 @@
 import numpy as np
 
+from gray import binary2gray
+
 def decode(hilberts, num_dims, num_bits):
   ''' Decode an array of Hilbert integers into locations in a hypercube.
 
@@ -16,7 +18,7 @@ def decode(hilberts, num_dims, num_bits):
 
    num_dims - The dimensionality of the hypercube. Integer.
 
-   num_bits - The number of bits for each dimension.
+   num_bits - The number of bits for each dimension. Integer.
 
   Returns:
   --------
@@ -45,9 +47,7 @@ def decode(hilberts, num_dims, num_bits):
   hh_bits = np.unpackbits(hh_uint8, axis=1)[:,-num_dims*num_bits:]
 
   # Take the sequence of bits and Gray-code it.
-  hh_shifted = np.zeros(hh_bits.shape)
-  hh_shifted[:,1:] = hh_bits[:,:-1] # right shift
-  gray = np.logical_xor(hh_bits, hh_shifted).astype(np.uint8)
+  gray = binary2gray(hh_bits)
 
   # There has got to be a better way to do this.
   # I could index them differently, but the eventual packbits likes it this way.
