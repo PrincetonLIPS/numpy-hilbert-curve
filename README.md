@@ -1,2 +1,40 @@
 # numpy-hilbert-curve
-Numpy implementation of Hilbert curves in arbitrary dimensions
+
+This is a numpy-based implementation of Hilbert curves, for up to a few tens of
+dimensions. A [Hilbert curve](https://en.wikipedia.org/wiki/Hilbert_curve) is a
+continuous
+[space-filling curve](https://en.wikipedia.org/wiki/Space-filling_curve)
+that lets you map from a single dimension into multiple dimensions.
+In two dimensions, you get curves that look like this:
+
+![2d Hilbert Curves](examples/example_2d.png)
+
+This is working entirely in terms of integers, so the size of the square
+reflects the number of bits per dimension. You could normalize this to put it
+into the unit hypercube with floating point numbers.
+
+The mechanics of the implementation rely on the Gray-code "correction"
+procedure presented in
+
+> Skilling, J. (2004, April). Programming the Hilbert curve. In AIP Conference
+>    Proceedings (Vol. 707, No. 1, pp. 381-387). American Institute of Physics.
+
+This paper does a lot of bit twiddling in C.  I replicate this with
+"bool-twiddling" in numpy, but of course numpy represents a bool value with 8
+bits, so don't expect it to really have the same performance as the equivalent
+C code.  However, my goal here (rather than write it in Cython) was to make it
+easy to integrate with code you're already writing in Python with numpy.
+
+The basic usage looks like this:
+```python
+import numpy as np
+from hilbert import decode, encode
+
+# 2 is the number of dimensions, 3 is the number of bits per dimension
+locs = decode(np.array([1,2,3]), 2, 3)
+
+print(locs)
+# prints [[0 1]
+#         [1 1]
+#         [1 0]]
+```
