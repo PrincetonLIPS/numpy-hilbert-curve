@@ -1,6 +1,6 @@
 import numpy as np
 
-from gray import binary2gray
+from .gray import binary2gray
 
 def decode(hilberts, num_dims, num_bits):
   ''' Decode an array of Hilbert integers into locations in a hypercube.
@@ -34,6 +34,9 @@ def decode(hilberts, num_dims, num_bits):
       curve?
       ''' % (num_dims, num_bits)
     )
+
+  # Handle the case where we got handed a naked integer.
+  hilberts = np.atleast_1d(hilberts)
 
   # Keep around the shape for later.
   orig_shape = hilberts.shape
