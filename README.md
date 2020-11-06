@@ -30,6 +30,7 @@ The basic usage looks like this:
 import numpy as np
 from hilbert import decode, encode
 
+# Turn an ndarray of Hilber integers into locations.
 # 2 is the number of dimensions, 3 is the number of bits per dimension
 locs = decode(np.array([1,2,3]), 2, 3)
 
@@ -37,4 +38,15 @@ print(locs)
 # prints [[0 1]
 #         [1 1]
 #         [1 0]]
+
+# You can go the other way also, of course.
+H = encode(locs, 2, 3)
+
+print(H)
+# prints array([1, 2, 3], dtype=uint64)
 ```
+The reason things like Hilbert curves are interesting is because they preserve
+some amount of locality.  In this figure, I'm gradually changing the color in
+the Hilbert integers, using the "copper" colormap:
+
+![2d Color Hilbert Curves](examples/example_2d_color.png)
