@@ -110,3 +110,51 @@ class TestBinary2Gray(ut.TestCase):
     t = np.array([0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ])
 
     nptest.assert_array_equal(y, t)
+
+class TestGray2Binary(ut.TestCase):
+
+  def test_basic_0000(self):
+    x = np.zeros(4)
+    y = gray2binary(x)
+    t = np.zeros(4)
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_11111(self):
+    x = np.array([1, 0, 0, 0, 0])
+    y = gray2binary(x)
+    t = np.ones(5)
+
+    nptest.assert_array_equal(y, t)
+
+
+  def test_basic_1010(self):
+    x = np.array([1, 1, 1, 1])
+    y = gray2binary(x)
+    t = np.array([1, 0, 1, 0])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_101001(self):
+    x = np.array([1, 1, 1, 1, 0, 1])
+    y = gray2binary(x)
+    t = np.array([1, 0, 1, 0, 0, 1])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_0101010101010101(self):
+    x = np.array([0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ])
+    y = gray2binary(x)
+    t = np.array([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_random(self):
+    npr.seed(1)
+    mean = 30
+    for ii in range(1000):
+      length = npr.geometric(1/(mean-2)) + 2
+      binary1 = npr.rand(length) < 0.5
+      gray    = binary2gray(binary1)
+      binary2 = gray2binary(gray)
+      nptest.assert_equal(binary1, binary2)
