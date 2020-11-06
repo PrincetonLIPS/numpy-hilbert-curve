@@ -1,6 +1,6 @@
 import numpy as np
 
-from gray import gray2binary
+from .gray import gray2binary
 
 def encode(locs, num_dims, num_bits):
   ''' Decode an array of locations in a hypercube into a Hilbert integer.
