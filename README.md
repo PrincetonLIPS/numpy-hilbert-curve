@@ -9,9 +9,13 @@ In two dimensions, you get curves that look like this:
 
 ![2d Hilbert Curves](examples/example_2d.png)
 
-This is working entirely in terms of integers, so the size of the square
-reflects the number of bits per dimension. You could normalize this to put it
-into the unit hypercube with floating point numbers.
+In three dimensions, you get curves that look like this:
+
+![3d Hilbert Curves](examples/example_3d.png)
+
+This is working entirely in terms of integers, so the size of the (hyper-)
+cube reflects the number of bits per dimension. You could normalize this to put
+it into the unit hypercube with floating point numbers.
 
 The mechanics of the implementation rely on the Gray-code "correction"
 procedure presented in
