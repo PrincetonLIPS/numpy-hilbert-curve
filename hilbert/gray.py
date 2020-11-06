@@ -72,7 +72,7 @@ def gray2binary(gray, axis=-1):
   '''
 
   # Loop the log2(bits) number of times necessary, with shift and xor.
-  shift = int(np.ceil(gray.shape[axis] / 2))
+  shift = 2**(int(np.ceil(np.log2(gray.shape[axis])))-1)
   while shift > 0:
     gray = np.logical_xor( gray, right_shift(gray, shift) )
     shift //= 2
