@@ -19,7 +19,7 @@ def right_shift(binary, k=1, axis=-1):
 
   # If we're shifting the whole thing, just return zeros.
   if binary.shape[axis] <= k:
-    return np.zeros_like(foo)
+    return np.zeros_like(binary)
 
   # Determine the padding pattern.
   padding = [(0,0)] * len(binary.shape)
