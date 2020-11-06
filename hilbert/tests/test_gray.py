@@ -73,3 +73,40 @@ class TestRightShift(ut.TestCase):
     t = np.zeros((4,5))
 
     nptest.assert_array_equal(y, t)
+
+class TestBinary2Gray(ut.TestCase):
+
+  def test_basic_0000(self):
+    x = np.zeros(4)
+    y = binary2gray(x)
+    t = np.zeros(4)
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_11111(self):
+    x = np.ones(5)
+    y = binary2gray(x)
+    t = np.array([1, 0, 0, 0, 0])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_1010(self):
+    x = np.array([1, 0, 1, 0])
+    y = binary2gray(x)
+    t = np.array([1, 1, 1, 1])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_101001(self):
+    x = np.array([1, 0, 1, 0, 0, 1])
+    y = binary2gray(x)
+    t = np.array([1, 1, 1, 1, 0, 1])
+
+    nptest.assert_array_equal(y, t)
+
+  def test_basic_0101010101010101(self):
+    x = np.array([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ])
+    y = binary2gray(x)
+    t = np.array([0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ])
+
+    nptest.assert_array_equal(y, t)
