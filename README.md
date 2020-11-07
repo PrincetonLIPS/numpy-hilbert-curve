@@ -54,3 +54,7 @@ some amount of locality.  In this figure, I'm gradually changing the color in
 the Hilbert integers, using the "copper" colormap:
 
 ![2d Color Hilbert Curves](examples/example_2d_color.png)
+
+In this picture, I'm doing the same thing in 3d:
+
+![3d Color Hilbert Curves](https://www.cs.princeton.edu/~rpa/rotate_3d_5bits.gif)
