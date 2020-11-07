@@ -57,4 +57,4 @@ the Hilbert integers, using the "copper" colormap:
 
 In this picture, I'm doing the same thing in 3d:
 
-![3d Color Hilbert Curves](https://www.cs.princeton.edu/~rpa/rotate_3d_5bits.gif)
+![3d Color Hilbert Curves](https://www.cs.princeton.edu/~rpa/rotate_3d_5bits_compressed.gif)
